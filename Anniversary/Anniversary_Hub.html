@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Our Journey | Anniversary</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#cdc4c6",
+                    "surface-dim": "#e7d6d8",
+                    "primary": "#a92d3f",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#f5e4e6",
+                    "on-tertiary-container": "#fffbff",
+                    "on-secondary-fixed": "#24181c",
+                    "on-secondary-container": "#716065",
+                    "on-primary": "#ffffff",
+                    "background": "#fff8f8",
+                    "outline": "#8b7171",
+                    "on-surface": "#22191b",
+                    "inverse-surface": "#382e30",
+                    "on-tertiary-fixed-variant": "#4b4547",
+                    "secondary-container": "#f4dde3",
+                    "tertiary-container": "#7a7375",
+                    "on-surface-variant": "#584142",
+                    "on-secondary-fixed-variant": "#524348",
+                    "on-tertiary-fixed": "#1f1a1c",
+                    "inverse-primary": "#ffb3b6",
+                    "outline-variant": "#dfbfbf",
+                    "primary-fixed-dim": "#ffb3b6",
+                    "inverse-on-surface": "#feedef",
+                    "tertiary-fixed": "#eae0e2",
+                    "on-primary-container": "#fffbff",
+                    "tertiary": "#615a5c",
+                    "surface-container": "#fbeaec",
+                    "secondary-fixed": "#f4dde3",
+                    "primary-container": "#ca4655",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#d7c1c7",
+                    "secondary": "#6b5a5f",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#f0dee1",
+                    "surface-container-low": "#fff0f2",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#ffdada",
+                    "on-primary-fixed-variant": "#8b152b",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#f0dee1",
+                    "surface-tint": "#ac2f41",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#fff8f8",
+                    "surface": "#fff8f8",
+                    "on-background": "#22191b",
+                    "on-primary-fixed": "#40000c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "md": "24px",
+                    "gutter": "24px",
+                    "xl": "80px",
+                    "margin-desktop": "64px",
+                    "lg": "48px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Playfair Display"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Playfair Display"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "headline-sm": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(169, 45, 63, 0.1);
+        }
+        
+        .fade-in { animation: fadeIn 1.2s ease-out forwards; }
+        .slide-up { animation: slideUp 0.8s ease-out forwards; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .pulse-heart { animation: heartBeat 1.5s infinite; }
+        @keyframes heartBeat {
+            0%, 30%, 60% { transform: scale(1); }
+            15% { transform: scale(1.1); }
+            45% { transform: scale(1.15); }
+        }
+
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.2;
+        }
+        .heart-particle {
+            position: absolute;
+            color: #a92d3f;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+
+<div class="hearts-bg" id="heartsContainer"></div>
+
+<!-- Navigation -->
+<header class="fixed top-0 w-full z-50 bg-surface-bright/80 backdrop-blur-md border-b border-outline-variant/30">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-7xl mx-auto">
+        <div class="font-headline-md text-primary italic">Our Journey</div>
+        <nav class="hidden md:flex gap-8 items-center">
+            <a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Our Story</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors" href="#gallery">Gallery</a>
+            <button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold hover:opacity-90 transition-all shadow-lg" onclick="toggleModal('memoryModal', true)">
+                Add Memory
+            </button>
+        </nav>
+        <button class="md:hidden text-primary">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </div>
+</header>
+
+<main class="relative pt-32">
+    <!-- Hero Section & Counter -->
+    <section class="min-h-[70vh] flex flex-col items-center justify-center px-margin-mobile text-center">
+        <div class="fade-in mb-8">
+            <span class="material-symbols-outlined text-primary text-6xl pulse-heart" style="font-variation-settings: 'FILL' 1;">favorite</span>
+        </div>
+        <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-6 slide-up">Together Since</h1>
+        <div class="grid grid-cols-3 gap-4 md:gap-8 slide-up" id="countdown">
+            <div class="glass-panel p-6 rounded-xl flex flex-col items-center min-w-[100px] md:min-w-[140px]">
+                <span class="font-headline-md text-primary text-4xl md:text-5xl" id="years">00</span>
+                <span class="font-label-md text-outline uppercase tracking-widest mt-2">Years</span>
+            </div>
+            <div class="glass-panel p-6 rounded-xl flex flex-col items-center min-w-[100px] md:min-w-[140px]">
+                <span class="font-headline-md text-primary text-4xl md:text-5xl" id="months">00</span>
+                <span class="font-label-md text-outline uppercase tracking-widest mt-2">Months</span>
+            </div>
+            <div class="glass-panel p-6 rounded-xl flex flex-col items-center min-w-[100px] md:min-w-[140px]">
+                <span class="font-headline-md text-primary text-4xl md:text-5xl" id="days">00</span>
+                <span class="font-label-md text-outline uppercase tracking-widest mt-2">Days</span>
+            </div>
+        </div>
+        <p class="mt-12 font-body-lg text-on-surface-variant max-w-xl italic slide-up">
+            "Every single second spent with you is a second I cherish forever."
+        </p>
+    </section>
+
+    <!-- Pure URL Music Player with Playlist -->
+    <section class="py-12 bg-surface-container-low/50 border-y border-outline-variant/20 shadow-inner">
+        <div class="max-w-xl mx-auto px-margin-mobile">
+            <div class="glass-panel p-5 rounded-3xl shadow-lg max-w-md mx-auto flex flex-col gap-4">
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex-1 min-w-0">
+                        <p class="text-primary font-label-md mb-0.5 uppercase tracking-tighter text-xs">Now Playing</p>
+                        <h3 class="font-headline-sm text-on-surface truncate" id="songTitle">Lover's Waltz</h3>
+                        <p class="text-on-surface-variant text-sm truncate" id="artistName">The Paper Kites</p>
+                    </div>
+                    <span class="material-symbols-outlined text-primary text-2xl animate-pulse shrink-0">music_note</span>
+                </div>
+
+                <div>
+                    <!-- Progress Bar (คลิกเพื่อข้ามท่อนได้) -->
+                    <div class="w-full h-1.5 bg-outline-variant/50 rounded-full overflow-hidden cursor-pointer relative" id="progressContainer">
+                        <div class="h-full bg-primary transition-all duration-100" id="progressBar" style="width: 0%"></div>
+                    </div>
+                    <div class="flex justify-between mt-2">
+                        <span class="text-[10px] font-bold text-outline" id="currentTime">0:00</span>
+                        <span class="text-[10px] font-bold text-outline" id="totalTime">0:00</span>
+                    </div>
+                </div>
+
+                <!-- Music Controls -->
+                <div class="flex items-center justify-center gap-6">
+                    <button class="text-primary hover:scale-110 transition-transform active:scale-95" onclick="prevTrack()">
+                        <span class="material-symbols-outlined text-3xl">skip_previous</span>
+                    </button>
+                    <button class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg hover:scale-105 transition-transform active:scale-95 shadow-primary/30" id="playBtn" onclick="togglePlay()">
+                        <span class="material-symbols-outlined text-4xl" id="playIcon">play_arrow</span>
+                    </button>
+                    <button class="text-primary hover:scale-110 transition-transform active:scale-95" onclick="nextTrack()">
+                        <span class="material-symbols-outlined text-3xl">skip_next</span>
+                    </button>
+                </div>
+
+                <!-- Playlist Box -->
+                <div class="border-t border-outline-variant/30 pt-3 mt-1">
+                    <p class="text-[11px] font-bold text-outline uppercase tracking-wider mb-2">Playlist Collection</p>
+                    <div class="flex flex-col gap-1 max-h-36 overflow-y-auto pr-1" id="playlistContainer">
+                        <!-- รายการเพลงจะถูกสร้างที่นี่โดย JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memory Gallery Section -->
+    <section class="py-16 max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop" id="gallery">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+                <h2 class="font-headline-md text-primary">Captured Moments</h2>
+                <p class="text-on-surface-variant mt-2">A timeline of our favorite memories together.</p>
+            </div>
+            <button class="flex items-center gap-2 text-primary font-bold hover:underline" onclick="toggleModal('memoryModal', true)">
+                <span class="material-symbols-outlined">add_circle</span>
+                Add Memory
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- การ์ดความทรงจำจะแสดงที่นี่ -->
+        </div>
+    </section>
+</main>
+
+<footer class="bg-surface-container-low py-12">
+    <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile max-w-7xl mx-auto gap-4">
+        <div class="text-primary font-headline-sm italic">Our Journey</div>
+        <p class="text-outline text-sm">Forever &amp; Always © 2024</p>
+    </div>
+</footer>
+
+<!-- Memory Modal -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-6 hidden" id="memoryModal">
+    <div class="absolute inset-0 bg-inverse-surface/40 backdrop-blur-md" onclick="toggleModal('memoryModal', false)"></div>
+    <div class="relative glass-panel bg-surface-container-lowest p-8 rounded-[2rem] w-full max-w-lg shadow-2xl">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="font-headline-md text-primary">New Memory</h3>
+            <button class="text-outline hover:text-primary" onclick="toggleModal('memoryModal', false)">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <form class="space-y-6" id="memoryForm">
+            <div>
+                <label class="font-label-md text-primary block mb-2">MEMORY TITLE</label>
+                <input class="w-full bg-transparent border-b-2 border-outline-variant focus:border-primary outline-none py-2" id="memoryTitleInput" placeholder="A special day at..." type="text" required>
+            </div>
+            <div>
+                <label class="font-label-md text-primary block mb-2">DESCRIPTION</label>
+                <textarea class="w-full bg-transparent border-b-2 border-outline-variant focus:border-primary outline-none py-2" id="memoryDescInput" placeholder="What made this moment unforgettable?" rows="3" required></textarea>
+            </div>
+            <div class="border-2 border-dashed border-outline-variant rounded-2xl p-8 text-center hover:bg-primary/5 transition-colors cursor-pointer group relative" id="uploadBox">
+                <div class="hidden absolute inset-0 bg-white rounded-2xl overflow-hidden" id="formImagePreviewContainer">
+                    <img class="w-full h-full object-cover" id="formImagePreview" src="">
+                </div>
+                <div id="uploadPrompt">
+                    <span class="material-symbols-outlined text-outline group-hover:text-primary text-4xl mb-2">add_photo_alternate</span>
+                    <p class="text-on-surface-variant">Click to upload a photo</p>
+                </div>
+            </div>
+            <button class="w-full bg-primary text-on-primary py-4 rounded-full font-bold shadow-lg hover:opacity-90 transition-all active:scale-95" type="submit">
+                Save to Gallery
+            </button>
+        </form>
+    </div>
+</div>
+
+<input type="file" id="imageUpload" accept="image/*" hidden>
+<audio id="audioPlayer"></audio>
+
+<script>
+    // Anniversary Date: June 15, 2020
+    const startDate = new Date('2020-06-15T00:00:00');
+
+    function updateCounter() {
+        const now = new Date();
+        let years = now.getFullYear() - startDate.getFullYear();
+        let months = now.getMonth() - startDate.getMonth();
+        let days = now.getDate() - startDate.getDate();
+
+        if (days < 0) {
+            months--;
+            const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+            days += prevMonth.getDate();
+        }
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        document.getElementById('years').innerText = String(years).padStart(2, '0');
+        document.getElementById('months').innerText = String(months).padStart(2, '0');
+        document.getElementById('days').innerText = String(days).padStart(2, '0');
+    }
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    // --- ส่วนแก้ไข: ลิงก์ URL เพลงสตรีมมิ่งออนไลน์ยอดนิยม (แก้ไขลิงก์ในจุดนี้ได้เลย) ---
+    const songs = [
+        { title: "ของขวัญ", artist: "Musketeers", url: "https://cdn.discordapp.com/attachments/1519737476347072765/1519737598036410508/b69da7c0f8b95930.mp3?ex=6a3ea56e&is=6a3d53ee&hm=da58c869371d4df4e3f8f3cb071d1aea17f5f00bf53c1667e4e62a19c24b2763&" },
+        { title: "แค่คุณ", artist: "Musketeers", url: "https://cdn.discordapp.com/attachments/1519737476347072765/1519738786119155834/fc7c161d582e3945.mp3?ex=6a3ea689&is=6a3d5509&hm=d98d8c0b4788aa8b8c1c9d9da46ed358366390fae78e439659ea64c043c64162&" },
+        { title: "Everything", artist: "Michael Bublé", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
+        { title: "Perfect", artist: "Ed Sheeran", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" }
+    ];
+    let currentTrack = 0;
+    const audioPlayer = document.getElementById('audioPlayer');
+
+    // ฟังก์ชันวาดรายการเพลงใน Playlist
+    function renderPlaylist() {
+        const container = document.getElementById('playlistContainer');
+        if(!container) return;
+        container.innerHTML = '';
+        
+        songs.forEach((song, index) => {
+            const item = document.createElement('div');
+            item.className = `flex justify-between items-center text-xs p-2.5 rounded-xl cursor-pointer transition-colors ${index === currentTrack ? 'bg-primary/10 text-primary font-bold' : 'hover:bg-primary/5 text-on-surface-variant'}`;
+            item.onclick = () => {
+                currentTrack = index;
+                updatePlayer(true);
+            };
+            item.innerHTML = `
+                <div class="truncate flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm shrink-0">${index === currentTrack && !audioPlayer.paused ? 'volume_up' : 'play_arrow'}</span>
+                    <span class="truncate">${song.title} <span class="text-[10px] opacity-60 font-normal">by ${song.artist}</span></span>
+                </div>
+            `;
+            container.appendChild(item);
+        });
+    }
+
+    // ฟังก์ชันอัปเดตเครื่องเล่นเพลง
+    function updatePlayer(shouldPlay = true) {
+        const current = songs[currentTrack];
+        document.getElementById('songTitle').innerText = current.title;
+        document.getElementById('artistName').innerText = current.artist;
+        audioPlayer.src = current.url;
+
+        if (shouldPlay) {
+            audioPlayer.play().then(() => {
+                document.getElementById('playIcon').innerText = 'pause';
+            }).catch(e => console.log("User interaction required for audio play", e));
+        } else {
+            document.getElementById('playIcon').innerText = 'play_arrow';
+        }
+        renderPlaylist();
+    }
+
+    function nextTrack() {
+        currentTrack = (currentTrack + 1) % songs.length;
+        updatePlayer(true);
+    }
+
+    function prevTrack() {
+        currentTrack = (currentTrack - 1 + songs.length) % songs.length;
+        updatePlayer(true);
+    }
+
+    window.togglePlay = function() {
+        const icon = document.getElementById('playIcon');
+        if (audioPlayer.paused) {
+            audioPlayer.play().then(() => { renderPlaylist(); }).catch(e => console.log(e));
+            icon.innerText = 'pause';
+        } else {
+            audioPlayer.pause();
+            icon.innerText = 'play_arrow';
+            renderPlaylist();
+        }
+    };
+
+    // อัปเดต Progress Bar และแสดงเวลาจริง
+    audioPlayer?.addEventListener('timeupdate', () => {
+        const p = (audioPlayer.currentTime / audioPlayer.duration) * 100 || 0;
+        document.getElementById('progressBar').style.width = p + '%';
+        
+        let curMins = Math.floor(audioPlayer.currentTime / 60);
+        let curSecs = Math.floor(audioPlayer.currentTime % 60);
+        document.getElementById('currentTime').innerText = `${curMins}:${String(curSecs).padStart(2, '0')}`;
+    });
+
+    audioPlayer?.addEventListener('loadedmetadata', () => {
+        let durMins = Math.floor(audioPlayer.duration / 60);
+        let durSecs = Math.floor(audioPlayer.duration % 60);
+        document.getElementById('totalTime').innerText = `${durMins}:${String(durSecs).padStart(2, '0')}`;
+    });
+
+    // กดเลือกท่อนเพลงบนแถบความยาวได้
+    document.getElementById('progressContainer')?.addEventListener('click', e => {
+        const width = e.currentTarget.clientWidth;
+        const clickX = e.offsetX;
+        const duration = audioPlayer.duration;
+        if(duration) {
+            audioPlayer.currentTime = (clickX / width) * duration;
+        }
+    });
+
+    // เล่นจบเพลงข้ามอัตโนมัติ
+    audioPlayer?.addEventListener('ended', () => {
+        nextTrack();
+    });
+
+    // โหลดเพลงแรกสแตนด์บายไว้ตอนเปิดเว็บ
+    window.addEventListener('DOMContentLoaded', () => {
+        updatePlayer(false);
+    });
+
+    // --- Modal Logic ---
+    function toggleModal(id, show) {
+        const modal = document.getElementById(id);
+        modal.classList.toggle('hidden', !show);
+        document.body.style.overflow = show ? 'hidden' : '';
+        if(!show) {
+            resetForm();
+        }
+    }
+
+    function resetForm() {
+        document.getElementById('memoryForm').reset();
+        document.getElementById('imageUpload').value = '';
+        document.getElementById('formImagePreviewContainer').classList.add('hidden');
+        document.getElementById('uploadPrompt').classList.remove('hidden');
+        currentBase64Image = "";
+    }
+
+    // Falling Hearts Background Simulation
+    function createHearts() {
+        const container = document.getElementById('heartsContainer');
+        const heartCount = 30;
+        for (let i = 0; i < heartCount; i++) {
+            const heart = document.createElement('span');
+            heart.className = 'material-symbols-outlined heart-particle';
+            heart.innerText = 'favorite';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 10 + 5 + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.opacity = Math.random();
+            container.appendChild(heart);
+        }
+    }
+    createHearts();
+
+    // Intersection Reveal Animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('slide-up');
+                entry.target.style.opacity = '1';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.slide-up').forEach(el => {
+        el.style.opacity = '0';
+        observer.observe(el);
+    });
+
+    // --- Memory Gallery, Form and Delete System ---
+    let currentBase64Image = "";
+    const uploadBox = document.getElementById('uploadBox');
+    if (uploadBox) {
+        uploadBox.onclick = () => document.getElementById('imageUpload').click();
+    }
+
+    document.getElementById('imageUpload')?.addEventListener('change', e => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+            currentBase64Image = reader.result;
+            document.getElementById('formImagePreview').src = reader.result;
+            document.getElementById('formImagePreviewContainer').classList.remove('hidden');
+            document.getElementById('uploadPrompt').classList.add('hidden');
+        };
+        reader.readAsDataURL(file);
+    });
+
+    function createMemoryCard(id, imgSrc, title, desc) {
+        const card = document.createElement('div');
+        card.className = 'glass-panel rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all flex flex-col relative group';
+        card.setAttribute('data-id', id);
+        card.innerHTML = `
+            <button onclick="deleteMemory('${id}')" class="absolute top-3 right-3 bg-white/80 hover:bg-red-500 hover:text-white text-red-500 w-9 h-9 rounded-full flex items-center justify-center shadow transition-all opacity-0 group-hover:opacity-100 z-10">
+                <span class="material-symbols-outlined text-xl">delete</span>
+            </button>
+            <div class="aspect-square w-full overflow-hidden">
+                <img src="${imgSrc}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="p-5 flex-1 flex flex-col bg-white/70">
+                <h4 class="font-headline-sm text-primary mb-1 truncate">${title}</h4>
+                <p class="text-on-surface-variant text-sm line-clamp-3">${desc}</p>
+            </div>
+        `;
+        return card;
+    }
+
+    document.getElementById('memoryForm').addEventListener('submit', e => {
+        e.preventDefault();
+        if (!currentBase64Image) {
+            alert("Please upload a photo first!");
+            return;
+        }
+        const title = document.getElementById('memoryTitleInput').value.trim();
+        const desc = document.getElementById('memoryDescInput').value.trim();
+        const grid = document.querySelector('#gallery .grid');
+        if (!grid) return;
+
+        const memoryId = 'mem_' + Date.now();
+        const newMemory = { id: memoryId, image: currentBase64Image, title: title, description: desc };
+
+        const card = createMemoryCard(newMemory.id, newMemory.image, newMemory.title, newMemory.description);
+        grid.prepend(card);
+
+        const data = JSON.parse(localStorage.getItem('love_gallery_v2') || '[]');
+        data.push(newMemory);
+        localStorage.setItem('love_gallery_v2', JSON.stringify(data));
+
+        toggleModal('memoryModal', false);
+    });
+
+    window.deleteMemory = function(id) {
+        if(confirm("Are you sure you want to delete this memory?")) {
+            const card = document.querySelector(`[data-id="${id}"]`);
+            if(card) card.remove();
+            let data = JSON.parse(localStorage.getItem('love_gallery_v2') || '[]');
+            data = data.filter(item => item.id !== id);
+            localStorage.setItem('love_gallery_v2', JSON.stringify(data));
+        }
+    };
+
+    window.addEventListener('load', () => {
+        const grid = document.querySelector('#gallery .grid');
+        if (!grid) return;
+        const data = JSON.parse(localStorage.getItem('love_gallery_v2') || '[]');
+        data.forEach(item => {
+            const card = createMemoryCard(item.id, item.image, item.title, item.description);
+            grid.prepend(card);
+        });
+    });
+</script>
+</body>
+</html>
