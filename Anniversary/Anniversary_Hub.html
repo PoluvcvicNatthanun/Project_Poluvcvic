@@ -79,7 +79,6 @@
                     "lg": "48px"
             },
             "fontFamily": {
-                    // กำหนดให้หัวข้อใช้ Playfair Display คู่กับฟอนต์ลายมือ Charm สำหรับภาษาไทย
                     "headline-md": ["Playfair Display", "Charm", "serif"],
                     "body-md": ["Plus Jakarta Sans", "Anuphan", "sans-serif"],
                     "headline-lg": ["Playfair Display", "Charm", "serif"],
@@ -154,8 +153,8 @@
     <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-7xl mx-auto">
         <div class="font-headline-md text-primary italic">Our Journey</div>
         <nav class="hidden md:flex gap-8 items-center">
-            <a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">เรื่องราวของเรา</a>
-            <a class="text-on-surface-variant hover:text-primary transition-colors" href="#gallery">แกลเลอรี่</a>
+            <a id="nav-story" class="text-primary font-bold border-b-2 border-primary pb-1 transition-all" href="#story" onclick="selectNav('story')">เรื่องราวของเรา</a>
+            <a id="nav-gallery" class="text-on-surface-variant hover:text-primary transition-all pb-1 border-b-2 border-transparent" href="#gallery" onclick="selectNav('gallery')">แกลเลอรี่</a>
             <button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold hover:opacity-90 transition-all shadow-lg" onclick="toggleModal('memoryModal', true)">
                 เพิ่มความทรงจำ
             </button>
@@ -167,7 +166,7 @@
 </header>
 
 <main class="relative pt-32">
-    <section class="min-h-[70vh] flex flex-col items-center justify-center px-margin-mobile text-center">
+    <section id="story" class="min-h-[70vh] flex flex-col items-center justify-center px-margin-mobile text-center scroll-mt-32">
         <div class="fade-in mb-8">
             <span class="material-symbols-outlined text-primary text-6xl pulse-heart" style="font-variation-settings: 'FILL' 1;">favorite</span>
         </div>
@@ -228,17 +227,17 @@
                 <div class="border-t border-outline-variant/30 pt-3 mt-1">
                     <p class="text-[11px] font-bold text-outline uppercase tracking-wider mb-2">รายชื่อเพลงในคอลเลกชัน</p>
                     <div class="flex flex-col gap-1 max-h-36 overflow-y-auto pr-1" id="playlistContainer">
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-16 max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop" id="gallery">
+    <section class="py-16 max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop scroll-mt-32" id="gallery">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
                 <h2 class="font-headline-md text-primary">ช่วงเวลาที่ถูกบันทึกไว้</h2>
-                <p class="text-on-surface-variant mt-2">ไทม์ไลน์ความทรงจำที่เราได้ใช้เวลาร่วมกัน</p>
+                <p class="text-on-surface-variant mt-2">ไทม์ไลน์ความทรงจำที่เราชื่นชอบที่สุดร่วมกัน</p>
             </div>
             <button class="flex items-center gap-2 text-primary font-bold hover:underline" onclick="toggleModal('memoryModal', true)">
                 <span class="material-symbols-outlined">add_circle</span>
@@ -247,14 +246,14 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            </div>
+        </div>
     </section>
 </main>
 
 <footer class="bg-surface-container-low py-12">
     <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile max-w-7xl mx-auto gap-4">
         <div class="text-primary font-headline-sm italic">Our Journey</div>
-        <p class="text-outline text-sm">Forever &amp; Always © 2026</p>
+        <p class="text-outline text-sm">Forever &amp; Always © 2024</p>
     </div>
 </footer>
 
@@ -296,7 +295,7 @@
 <audio id="audioPlayer"></audio>
 
 <script>
-    // วันครบรอบ: 15 มิถุนายน 2020
+    // วันครบรอบ
     const startDate = new Date('2020-06-15T00:00:00');
 
     function updateCounter() {
@@ -322,12 +321,57 @@
     setInterval(updateCounter, 1000);
     updateCounter();
 
-    // --- ส่วนของ URL เพลงออนไลน์ สามารถนำลิงก์ .mp3 ของตัวเองมาเปลี่ยนตรงนี้ได้เลย ---
+    // --- 🛠️ ส่วนของระบบคำนวณสลับแถบโฟกัสสีแดงตัวใหม่ (ใช้วิธีเช็กขอบเขตหน้าต่างจริง) ---
+    let isClickScrolling = false; 
+
+    function selectNav(target) {
+        isClickScrolling = true;
+        const navStory = document.getElementById('nav-story');
+        const navGallery = document.getElementById('nav-gallery');
+
+        if(target === 'story') {
+            navStory.className = "text-primary font-bold border-b-2 border-primary pb-1 transition-all";
+            navGallery.className = "text-on-surface-variant hover:text-primary transition-all pb-1 border-b-2 border-transparent";
+        } else {
+            navGallery.className = "text-primary font-bold border-b-2 border-primary pb-1 transition-all";
+            navStory.className = "text-on-surface-variant hover:text-primary transition-all pb-1 border-b-2 border-transparent";
+        }
+        
+        setTimeout(() => { isClickScrolling = false; }, 800);
+    }
+
+    function activeNavOnScroll() {
+        if (isClickScrolling) return; 
+
+        const gallerySection = document.getElementById('gallery');
+        const navStory = document.getElementById('nav-story');
+        const navGallery = document.getElementById('nav-gallery');
+
+        if (!gallerySection || !navStory || !navGallery) return;
+
+        // คำนวณขอบเขตของส่วนแกลเลอรี่เทียบกับขอบบนหน้าจอ
+        const rect = gallerySection.getBoundingClientRect();
+        
+        // ถ้าขอบบนของส่วนแกลเลอรี่เลื่อนขึ้นมาถึงครึ่งหน้าจอ (หรือเลยขึ้นไปแล้ว) ให้สลับไปเป็นโฟกัสแกลเลอรี่
+        if (rect.top <= window.innerHeight / 2) {
+            navGallery.className = "text-primary font-bold border-b-2 border-primary pb-1 transition-all";
+            navStory.className = "text-on-surface-variant hover:text-primary transition-all pb-1 border-b-2 border-transparent";
+        } else {
+            // มิเช่นนั้นให้อยู่ที่เรื่องราวของเรา
+            navStory.className = "text-primary font-bold border-b-2 border-primary pb-1 transition-all";
+            navGallery.className = "text-on-surface-variant hover:text-primary transition-all pb-1 border-b-2 border-transparent";
+        }
+    }
+    // ดักฟังเหตุการณ์ตอนเลื่อนและการโหลดหน้าเว็บ
+    window.addEventListener('scroll', activeNavOnScroll);
+    window.addEventListener('load', activeNavOnScroll);
+
+    // --- ส่วนของเพลงคอลเลกชัน ---
     const songs = [
-        { title: "ของขวัญ", artist: "Musketeers", url: "https://cdn.discordapp.com/attachments/1519737476347072765/1519737598036410508/b69da7c0f8b95930.mp3?ex=6a3ea56e&is=6a3d53ee&hm=da58c869371d4df4e3f8f3cb071d1aea17f5f00bf53c1667e4e62a19c24b2763&" },
-        { title: "แค่คุณ", artist: "Musketeers", url: "https://cdn.discordapp.com/attachments/1519737476347072765/1519738786119155834/fc7c161d582e3945.mp3?ex=6a3ea689&is=6a3d5509&hm=d98d8c0b4788aa8b8c1c9d9da46ed358366390fae78e439659ea64c043c64162&" },
-        { title: "เอาเป็นว่าเพลงนี้คือเพลงของเธอ", artist: "SAMBBLACK", url: "https://cdn.discordapp.com/attachments/1519737476347072765/1519738829089800233/SAMBLACK_-_.mp3?ex=6a3ea694&is=6a3d5514&hm=8b7080862cba6368649e50535ad77ef6ecc8b4435987e313db8b136a3334692d&" },
-        { title: "แรกพบรัก", artist: "SAMBLACK", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" }
+        { title: "Lover's Waltz", artist: "The Paper Kites", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
+        { title: "Better Together", artist: "Jack Johnson", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
+        { title: "Everything", artist: "Michael Bublé", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
+        { title: "Perfect", artist: "Ed Sheeran", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" }
     ];
     let currentTrack = 0;
     const audioPlayer = document.getElementById('audioPlayer');
@@ -363,7 +407,7 @@
         if (shouldPlay) {
             audioPlayer.play().then(() => {
                 document.getElementById('playIcon').innerText = 'pause';
-            }).catch(e => console.log("User interaction required for audio play", e));
+            }).catch(e => console.log("Audio play allowed check", e));
         } else {
             document.getElementById('playIcon').innerText = 'play_arrow';
         }
